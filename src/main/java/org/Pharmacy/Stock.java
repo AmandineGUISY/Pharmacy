@@ -25,4 +25,23 @@ public class Stock {
         }
     }
 
+
+    private String research_in_list(String name ,ArrayList<Product> liste) {
+        int milieu =liste.size() / 2;
+        if (liste.isEmpty()) {
+            return ("the product "+name +" is not available");
+        }
+        else if (name == liste.get(milieu).getName()) {
+            return ("the product "+name+" is available and "+ liste.get(milieu).getQuantity()+ "items left");
+        } else if (name.compareTo(liste.get(milieu).getName()) < 0) {
+            return research_in_list(name, new ArrayList<>(liste.subList(0, milieu)));
+        } else {
+            return research_in_list(name, new ArrayList<>(liste.subList(milieu + 1, liste.size())));
+        }
+    }
+
+    public String research(String name) {
+        return research_in_list(name,stock);
+    }
+
 }

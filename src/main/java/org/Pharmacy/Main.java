@@ -9,6 +9,9 @@ public class Main {
 
     pharmacy.printStock();
 
+    System.out.println(pharmacy.research("creme"));
+    System.out.println(pharmacy.research("george"));
+
 
     }
 }
