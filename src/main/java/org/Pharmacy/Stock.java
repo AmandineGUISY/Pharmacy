@@ -6,7 +6,16 @@ public class Stock {
     private ArrayList<Product> stock = new ArrayList();
 
     public void addStock(Product product) {
-        stock.add(product);
+        if (product.getPrice() <= 0 || product.getQuantity() < 0 ) {
+            System.out.println("this is not available quantity or price for this product : "+product.getName());
+        }
+        else {
+            stock.add(product);
+        }
+    }
+
+    public void removeStock(Product product) {
+
     }
 
     public void printStock() {
