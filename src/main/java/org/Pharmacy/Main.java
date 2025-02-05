@@ -12,6 +12,11 @@ public class Main {
     pharmacy.printStock();
     pharmacy.RemoveStock("vitamine c");
     pharmacy.printStock();
+
+    System.out.println(pharmacy.research("creme"));
+    System.out.println(pharmacy.research("george"));
+
+
     }
 }
 
