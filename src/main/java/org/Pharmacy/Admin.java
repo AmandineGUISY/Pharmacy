@@ -1,10 +1,11 @@
 package org.Pharmacy;
 
-public class Admin extends Utilisateur{
-    public Admin(String identifiant, String motDePasse) {
-        super(identifiant, motDePasse);
+public class Admin extends Utilisateur implements Role{
+    public Admin(String identifiant, String motDePasse, String role) {
+        super(identifiant, motDePasse, role);
     }
-    public void afficher_role(){
-        System.out.println("role ; administrateur");
+
+    public void afficherRole() {
+        System.out.println("Rôle : Administrateur");
     }
 }

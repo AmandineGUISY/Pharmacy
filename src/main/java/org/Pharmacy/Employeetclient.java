@@ -1,11 +1,11 @@
 package org.Pharmacy;
 
-public class Employeetclient extends Utilisateur{
-    public Employeetclient(String identifiant, String motDePasse) {
-        super(identifiant, motDePasse);
+public class Employeetclient extends Utilisateur implements Role{
+    public Employeetclient(String identifiant, String motDePasse, String role) {
+        super(identifiant, motDePasse, role);
     }
-    public void afficher_role(){
-        System.out.println("role ; employé ou client");
+
+    public void afficherRole() {
+        System.out.println("Rôle : Employé ou Client");
     }
 }
-
