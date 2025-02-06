@@ -67,4 +67,21 @@ public class Stock {
         return research_in_list(name,stock);
     }
 
+    public Product getProduct(String name, ArrayList<Product> list) {
+        int milieu =list.size() / 2;
+        if (list.isEmpty()) {
+            return null;
+        }
+        else if (Objects.equals(name, list.get(milieu).getName())) {
+            return list.get(milieu);
+        } else if (name.compareTo(list.get(milieu).getName()) < 0) {
+            return getProduct(name, new ArrayList<>(list.subList(0, milieu)));
+        } else {
+            return getProduct(name, new ArrayList<>(list.subList(milieu + 1, list.size())));
+        }
+    }
+
+    public double getProductStock(String name) {
+        return getProduct(name, stock).getQuantity();
+    }
 }
