@@ -1,11 +1,13 @@
 package org.Pharmacy;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Urgency extends Order {
+public class Urgency extends Order implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private ArrayList<Product> orders = new ArrayList<>();
     private ArrayList<Double> quantityOrders= new ArrayList<>();
 

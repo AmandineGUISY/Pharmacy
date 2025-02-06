@@ -1,8 +1,10 @@
 package org.Pharmacy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-abstract class Utilisateur {
+abstract class Utilisateur implements Serializable {
+    private static final long serialVersionUID = 1L;
     protected String identifiant;
     protected String motDePasse;
     protected String role;

@@ -1,6 +1,8 @@
 package org.Pharmacy;
 
-public class Category{
+import java.io.Serializable;
+
+public class Category implements Serializable {
     private final String categoryName;
 
     public Category(String categoryName) {
@@ -9,5 +11,8 @@ public class Category{
 
     public String getName() {
         return categoryName;
+    }
+    public String toString(){
+        return "";
     }
 }
