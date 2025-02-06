@@ -131,4 +131,10 @@ public class Stock {
             System.out.println("ALERT: Critical stock for " + product.getName() + " : only " + product.getQuantity() + " left ");
         }
     }
+
+    public void CriticalStockVerify(){
+        for (Product product : stock) {
+            CriticalStock(product);
+        }
+    }
 }

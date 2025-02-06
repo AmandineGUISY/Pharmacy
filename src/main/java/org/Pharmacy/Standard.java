@@ -66,6 +66,7 @@ public class Standard extends Order {
             orders.get(i).setQuantity(quantityOrders.get(i));
         }
         System.out.println("Standard order has been confirmed");
+        stock.CriticalStockVerify();
     }
 
     boolean isAlreadyInOrder(String str){
