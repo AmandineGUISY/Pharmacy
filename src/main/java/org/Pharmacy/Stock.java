@@ -47,13 +47,15 @@ public class Stock {
     }
 
 
-    private String research_in_list(String name ,ArrayList<Product> liste) {
+    private boolean research_in_list(String name ,ArrayList<Product> liste) {
         int milieu =liste.size() / 2;
         if (liste.isEmpty()) {
-            return ("the product "+name +" is not available");
+            System.out.println("the product "+name +" is not available");
+            return false;
         }
         else if (name == liste.get(milieu).getName()) {
-            return ("the product "+name+" is available and "+ liste.get(milieu).getQuantity()+ "items left");
+            System.out.println("the product "+name+" is available and "+ liste.get(milieu).getQuantity()+ "items left");
+            return true;
         } else if (name.compareTo(liste.get(milieu).getName()) < 0) {
             return research_in_list(name, new ArrayList<>(liste.subList(0, milieu)));
         } else {
@@ -61,10 +63,31 @@ public class Stock {
         }
     }
 
-    public String research(String name) {
+    public boolean research(String name) {
         return research_in_list(name,stock);
     }
 
+    public Product getProduct(String name, ArrayList<Product> list) {
+        int milieu =list.size() / 2;
+        if (list.isEmpty()) {
+            return null;
+        }
+        else if (Objects.equals(name, list.get(milieu).getName())) {
+            return list.get(milieu);
+        } else if (name.compareTo(list.get(milieu).getName()) < 0) {
+            return getProduct(name, new ArrayList<>(list.subList(0, milieu)));
+        } else {
+            return getProduct(name, new ArrayList<>(list.subList(milieu + 1, list.size())));
+        }
+    }
+
+    public double getProductStock(String name) {
+        return getProduct(name, stock).getQuantity();
+    }
+
+    public Product getProductProduct(String name) {
+        return getProduct(name, stock);
+    }
     private ArrayList<Product> tri_a_bulle (ArrayList<Product> liste){
         for (int i = liste.size(); i > 0; i--) {
             for (int j = 0 ; j <i-1; j++){
