@@ -65,4 +65,30 @@ public class Stock {
         return research_in_list(name,stock);
     }
 
+    private ArrayList<Product> tri_a_bulle (ArrayList<Product> liste){
+        for (int i = liste.size(); i > 0; i--) {
+            for (int j = 0 ; j <i-1; j++){
+                if (liste.get(j+1).getQuantity()<liste.get(j).getQuantity()){
+                    Product change = liste.get(j);
+                    liste.set(j, liste.get(j+1));
+                    liste.set(j+1, change);
+                }
+            }
+        }
+        return liste;
+    }
+    public void afficher_critique() {
+        ArrayList<Product> critical_stock = new ArrayList<>();
+        for (int i = 0; i < stock.size(); i++) {
+            if (stock.get(i).getQuantity()<5) {
+                critical_stock.add(stock.get(i));
+            }
+        }
+        critical_stock=tri_a_bulle(critical_stock);
+        for (int i = 0; i < critical_stock.size(); i++) {
+            System.out.println(critical_stock.get(i).getName() +": " + critical_stock.get(i).getQuantity() + " unité(s)");
+        }
+    }
+
+
 }
