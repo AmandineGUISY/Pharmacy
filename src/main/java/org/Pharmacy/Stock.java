@@ -17,13 +17,7 @@ public class Stock {
     }
 
     private void rmStock(String productName) {
-        for (int i = 0; i < stock.size(); i++) {
-            if (productName.equals(stock.get(i).getName())) {
-                stock.remove(i);
-                return;
-            }
-        }
-        System.out.println("This product doesn't exist");
+
     }
 
     public void RemoveStock(String productName) {
@@ -112,5 +106,8 @@ public class Stock {
         for (Product product : critical_stock) {
             System.out.println(product.getName() + ": " + product.getQuantity() + " unité(s)");
         }
+    }
+
+    public void CriticalStockVerify() {
     }
 }
