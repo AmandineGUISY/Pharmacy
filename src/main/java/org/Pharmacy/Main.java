@@ -10,6 +10,10 @@ public class Main {
         pharmacy.addStock(new Product("vitamine c", 30, 2, "vitamine"));
 
         pharmacy.afficher_critique();
+        Order pharmacyOrder= new Standard();
+
+        pharmacyOrder.makaOrder(pharmacy);
+        pharmacy.printStock();
     }
 }
 

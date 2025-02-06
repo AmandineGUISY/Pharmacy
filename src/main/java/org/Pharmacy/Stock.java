@@ -113,5 +113,22 @@ public class Stock {
         }
     }
 
+    public void StockOrder(String productName, int quantityOrdered) {
+        for (Product product : stock) {
+            if (product.getName().equals(productName)){
+                if (product.getQuantity() > quantityOrdered) {
+                    product.setQuantity(product.getQuantity() - quantityOrdered);
+                    System.out.println("Stock updated. New quantity of " + productName + " : " + product.getQuantity());
+                    CriticalStock(product);
+                    return;
+                }
+            }
+        }
+    }
 
+    public void CriticalStock(Product product){
+        if (product.getQuantity()<5){
+            System.out.println("ALERT: Critical stock for " + product.getName() + " : only " + product.getQuantity() + " left ");
+        }
+    }
 }
