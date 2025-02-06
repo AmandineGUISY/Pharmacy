@@ -100,41 +100,17 @@ public class Stock {
         }
         return liste;
     }
+
     public void afficher_critique() {
         ArrayList<Product> critical_stock = new ArrayList<>();
-        for (int i = 0; i < stock.size(); i++) {
-            if (stock.get(i).getQuantity()<5) {
-                critical_stock.add(stock.get(i));
+        for (Product value : stock) {
+            if (value.getQuantity() < 5) {
+                critical_stock.add(value);
             }
         }
         critical_stock=tri_a_bulle(critical_stock);
-        for (int i = 0; i < critical_stock.size(); i++) {
-            System.out.println(critical_stock.get(i).getName() +": " + critical_stock.get(i).getQuantity() + " unité(s)");
-        }
-    }
-
-    public void StockOrder(String productName, int quantityOrdered) {
-        for (Product product : stock) {
-            if (product.getName().equals(productName)){
-                if (product.getQuantity() > quantityOrdered) {
-                    product.setQuantity(product.getQuantity() - quantityOrdered);
-                    System.out.println("Stock updated. New quantity of " + productName + " : " + product.getQuantity());
-                    CriticalStock(product);
-                    return;
-                }
-            }
-        }
-    }
-
-    public void CriticalStock(Product product){
-        if (product.getQuantity()<5){
-            System.out.println("ALERT: Critical stock for " + product.getName() + " : only " + product.getQuantity() + " left ");
-        }
-    }
-
-    public void CriticalStockVerify(){
-        for (Product product : stock) {
-            CriticalStock(product);
+        for (Product product : critical_stock) {
+            System.out.println(product.getName() + ": " + product.getQuantity() + " unité(s)");
         }
     }
 }

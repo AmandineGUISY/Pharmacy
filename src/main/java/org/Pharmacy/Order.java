@@ -4,5 +4,6 @@ import java.util.ArrayList;
 
 public abstract class Order {
 
-    abstract void makaOrder(Stock stock);
+    abstract public void makaOrder(Stock stock);
+    abstract public void confirmOrder(Stock stock);
 }

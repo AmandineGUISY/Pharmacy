@@ -10,7 +10,7 @@ public class Standard extends Order {
     private ArrayList<Double> quantityOrders= new ArrayList<>();
 
     @Override
-    void makaOrder(Stock stock) {
+    public void makaOrder(Stock stock) {
         Scanner inputS = new Scanner(System.in);
         String answer = "y";
         String product = "";
@@ -61,7 +61,8 @@ public class Standard extends Order {
         inputS.close();
     }
 
-    void confirmOrder(Stock stock){
+    @Override
+    public void confirmOrder(Stock stock){
         for (int i = 0; i < orders.size(); i++) {
             orders.get(i).setQuantity(quantityOrders.get(i));
         }
