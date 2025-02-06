@@ -14,8 +14,8 @@ public class Standard extends Order {
         Scanner inputS = new Scanner(System.in);
         String answer = "y";
         String product = "";
-        Product verify = null;
-        double quantity = 0;
+        Product verify;
+        double quantity;
 
         while (answer.equals("y")) {
 
@@ -47,7 +47,7 @@ public class Standard extends Order {
             System.out.println("Do you want to add another product? (Y/N)");
             answer = inputS.nextLine().toLowerCase();
             if (answer.equals("n")) {
-                System.out.println("Do you want to confirm or cancel your standard urgency order ? (Y/C)");
+                System.out.println("Do you want to confirm or cancel your standard order ? (Y/C)");
                 product = inputS.nextLine().toLowerCase();
                 if (product.equals("y")) {answer = "OK";}
                 if (product.equals("c")) {
@@ -69,15 +69,6 @@ public class Standard extends Order {
         stock.CriticalStockVerify();
     }
 
-    boolean isAlreadyInOrder(String str){
-        for (int i = 0; i < orders.size(); i++) {
-            if (orders.get(i).getName() == str){
-                System.out.println("You have already passed an order for this product");
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 
