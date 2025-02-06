@@ -1,19 +1,23 @@
 package org.Pharmacy;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Stock pharmacy = new Stock();
-        pharmacy.addStock(new Product("creme", 3, 30,  "Cosmétique"));
-        pharmacy.addStock(new Product("dentifrice", 5, 20,  "Cosmétique"));
-        pharmacy.addStock(new Product("vitamine c", 30, 1, "vitamine"));
+
+        Product cream = new Product("cream", 3, 30,  "cosmetic");
+        Product toothpaste = new Product("toothpaste", 3, 30,  "oral");
+        Product vitaminC = new Product("vitaminC", 3, 30,  "vitamin");
+
+        pharmacy.addStock(cream);
+        pharmacy.addStock(toothpaste);
+        pharmacy.addStock(vitaminC);
 
     pharmacy.printStock();
-    pharmacy.RemoveStock("vitamine c");
-    pharmacy.printStock();
 
-    System.out.println(pharmacy.research("creme"));
+    System.out.println(pharmacy.research("cream"));
     System.out.println(pharmacy.research("george"));
 
 
