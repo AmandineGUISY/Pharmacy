@@ -9,33 +9,51 @@ public class Urgency extends Order {
 
     @Override
     void makaOrder(Stock stock) {
-        Scanner input = new Scanner(System.in);
-        String answer = "";
+        Scanner inputU = new Scanner(System.in);
+        String answer = "y";
+        String product = "";
+        Product verify = null;
+        double quantity = 0;
+        double quantityStock = 0;
 
-        while (answer != "y") {
+        while (answer.equals("y")) {
+
             System.out.println("Products available: ");
             stock.printStock();
             System.out.println("What product do you want to order? ");
-            String product = input.nextLine();
-            boolean verify = stock.research(product);
-            if (!verify) {continue;}
+            product = inputU.nextLine();
+            verify = stock.getProductProduct(product);
+            if (verify == null) {
+                continue;
+            }
+
             System.out.println("Quantity: ");
-            double quantity = input.nextDouble();
+            quantity = inputU.nextDouble();
+            inputU.nextLine();
+
+            if (quantity <= 0) {
+                System.out.println("The quantity must be greater than 0\n");
+                continue;
+            }
+            if (verify.getQuantity() < quantity) {
+                System.out.println("You do not have enough stock for this product\n");
+                continue;
+            }
+
+            orders.add(stock.getProductProduct(product));
+
             System.out.println("Do you want to add another product? (Y/N)");
-            product = input.nextLine().toLowerCase();
-            if (product.equals("n")) {
-                System.out.prinln("Do you want to confirm your urgency order ? (Y/N)");
-                answer = input.nextLine().toLowerCase();
+            answer = inputU.nextLine().toLowerCase();
+            if (answer.equals("n")) {
+                System.out.println("Do you want to confirm or cancel your urgency order ? (Y/C)");
+                product = inputU.nextLine().toLowerCase();
+                if (product.equals("y")) {answer = "OK";}
+                if (product.equals("n")) {
+                    answer = "C";
+                    orders.clear();
                 }
+            }
         }
-
-        }
-
-
-    }
-
-    @Override
-    void verifyOrder() {
-
+        inputU.close();
     }
 }

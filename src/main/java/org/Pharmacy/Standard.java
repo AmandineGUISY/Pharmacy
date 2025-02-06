@@ -1,20 +1,61 @@
 package org.Pharmacy;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Standard extends Order{
+public class Standard extends Order {
 
-    public Standard(ArrayList<String> orderItems, double quantity, double totalPrice) {
-        super(orderItems, quantity, totalPrice);
-    }
+    private ArrayList<Product> orders = new ArrayList<>();
 
     @Override
-    void makaOrder() {
+    void makaOrder(Stock stock) {
+        Scanner inputS = new Scanner(System.in);
+        String answer = "y";
+        String product = "";
+        Product verify = null;
+        double quantity = 0;
+        double quantityStock = 0;
 
-    }
+        while (answer.equals("y")) {
 
-    @Override
-    void verifyOrder() {
+            System.out.println("Products available: ");
+            stock.printStock();
+            System.out.println("What product do you want to order? ");
+            product = inputS.nextLine();
+            verify = stock.getProductProduct(product);
+            if (verify == null) {
+                continue;
+            }
 
+            System.out.println("Quantity: ");
+            quantity = inputS.nextDouble();
+            inputS.nextLine();
+
+            if (quantity <= 0) {
+                System.out.println("The quantity must be greater than 0\n");
+                continue;
+            }
+            if (verify.getQuantity() < quantity) {
+                System.out.println("You do not have enough stock for this product\n");
+                continue;
+            }
+
+            orders.add(stock.getProductProduct(product));
+
+            System.out.println("Do you want to add another product? (Y/N)");
+            answer = inputS.nextLine().toLowerCase();
+            if (answer.equals("n")) {
+                System.out.println("Do you want to confirm or cancel your standard urgency order ? (Y/C)");
+                product = inputS.nextLine().toLowerCase();
+                if (product.equals("y")) {answer = "OK";}
+                if (product.equals("n")) {
+                    answer = "C";
+                    orders.clear();
+                }
+            }
+        }
+        inputS.close();
     }
 }
+
+

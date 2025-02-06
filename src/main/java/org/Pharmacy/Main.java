@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Stock pharmacy = new Stock();
+        Order pharmacyOrder = new Urgency();
 
         Product cream = new Product("cream", 3, 30,  "cosmetic");
         Product toothpaste = new Product("toothpaste", 3, 30,  "oral");
@@ -15,12 +16,7 @@ public class Main {
         pharmacy.addStock(toothpaste);
         pharmacy.addStock(vitaminC);
 
-    pharmacy.printStock();
-
-    System.out.println(pharmacy.research("cream"));
-    System.out.println(pharmacy.research("george"));
-
-
+        pharmacyOrder.makaOrder(pharmacy);
     }
 }
 

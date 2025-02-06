@@ -84,4 +84,8 @@ public class Stock {
     public double getProductStock(String name) {
         return getProduct(name, stock).getQuantity();
     }
+
+    public Product getProductProduct(String name) {
+        return getProduct(name, stock);
+    }
 }
