@@ -47,13 +47,15 @@ public class Stock {
     }
 
 
-    private String research_in_list(String name ,ArrayList<Product> liste) {
+    private boolean research_in_list(String name ,ArrayList<Product> liste) {
         int milieu =liste.size() / 2;
         if (liste.isEmpty()) {
-            return ("the product "+name +" is not available");
+            System.out.println("the product "+name +" is not available");
+            return false;
         }
         else if (name == liste.get(milieu).getName()) {
-            return ("the product "+name+" is available and "+ liste.get(milieu).getQuantity()+ "items left");
+            System.out.println("the product "+name+" is available and "+ liste.get(milieu).getQuantity()+ "items left");
+            return true;
         } else if (name.compareTo(liste.get(milieu).getName()) < 0) {
             return research_in_list(name, new ArrayList<>(liste.subList(0, milieu)));
         } else {
@@ -61,7 +63,7 @@ public class Stock {
         }
     }
 
-    public String research(String name) {
+    public boolean research(String name) {
         return research_in_list(name,stock);
     }
 
